@@ -8,6 +8,7 @@ class Game {
     this.reset();
 
     this.registerEvents();
+    
   }
 
   reset() {
@@ -17,15 +18,23 @@ class Game {
   }
 
   registerEvents() {
-    /*
+      /*
       TODO:
       Написать обработчик события, который откликается
       на каждый введённый символ.
       В случае правильного ввода слова вызываем this.success()
       При неправильном вводе символа - this.fail();
      */
+    document.addEventListener('keyup', (event) => {
+      let current = this.currentSymbol;
+      if (event.key.toLowerCase() == current.textContent.toLowerCase()) {
+        this.success();
+      }
+      else 
+        this.fail();
+    });
   }
-
+  
   success() {
     this.currentSymbol.classList.add('symbol_correct');
     this.currentSymbol = this.currentSymbol.nextElementSibling;
@@ -86,5 +95,7 @@ class Game {
   }
 }
 
-new Game(document.getElementById('game'))
+new Game(document.getElementById('game'));
+
+
 
