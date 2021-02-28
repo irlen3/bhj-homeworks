@@ -9,13 +9,12 @@ function tooltipClick(event) {
 
     if (tooltipElem) {
         if(tooltipElem === this.nextElementSibling) {
-            tooltipElem.remove();
-            tooltipElem = null;
+            tooltipElem.classList.remove('tooltip_active');
+            tooltipElem = null; 
             event.preventDefault();
             return;
         } else {
-            tooltipElem.remove();
-            tooltipElem = null;  
+            tooltipElem.classList.remove('tooltip_active');
         }
     };
 

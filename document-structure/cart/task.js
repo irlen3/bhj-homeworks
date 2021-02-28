@@ -38,15 +38,14 @@ for(let add of addProduct) {
         attr = parent.getAttribute("data-id");
         sumProduct = parent.querySelector('.product__quantity-value').innerText;
 
-        if(cart.children.length > 0) {
-            for(let i=0; i<cart.children.length; i++) {
-                if(cart.children[i].dataset.id === attr) {
-                    sumProductCart = cart.children[i].querySelector('.cart__product-count').innerText;
-                    cart.children[i].querySelector('.cart__product-count').innerText = parseInt(sumProductCart) + parseInt(sumProduct);
-                    return;
-                }
-            }
-        }  
+        let mass = Array.from(cart.children);
+        let elem = mass.find(element => element.dataset.id === attr);
+        if (elem) {
+            sumProductCart = elem.querySelector('.cart__product-count').innerText;
+            elem.querySelector('.cart__product-count').innerText = parseInt(sumProductCart) + parseInt(sumProduct);
+            return;
+        }
+
         product = document.createElement('div');
         product.classList.add('cart__product');
         product.setAttribute("data-id", attr);

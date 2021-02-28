@@ -16,6 +16,6 @@ function changeList(event) {
         });
         taskList.appendChild(taskAdd);
         tasksInput.value = '';
-        event.preventDefault();
     }
+    event.preventDefault();
 }
