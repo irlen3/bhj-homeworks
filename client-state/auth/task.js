@@ -5,11 +5,17 @@
 // При загрузке страницы, в случае, если в локальном хранилище имеется id пользователя, выведите блок #welcome с заданным id пользователя
 
 let signin = document.querySelector('.signin');
-signin.classList.add('signin_active');
 let button = document.querySelector('.btn');
 let form = document.getElementById('signin__form');
 let welcome = document.querySelector('.welcome');
 let data;
+
+if (localStorage.getItem("user_id")) {
+    document.getElementById('user_id').innerText = localStorage.getItem("user_id");
+    welcome.classList.add('welcome_active');
+} else {
+    signin.classList.add('signin_active');
+}
 
 button.addEventListener('click',(e)=>{
     let request = new XMLHttpRequest();
@@ -21,7 +27,7 @@ button.addEventListener('click',(e)=>{
             data = JSON.parse(this.responseText);
             if(data.success === true) {
                 if (localStorage.getItem("user_id")) {
-                    document.getElementById('user_id').innerText = localStorage.getItem("user_id");5
+                    document.getElementById('user_id').innerText = localStorage.getItem("user_id");
                     signin.classList.remove('signin_active');
                     welcome.classList.add('welcome_active');
                 } else {

@@ -7,6 +7,4 @@ textArea.addEventListener("input", function() {
     localStorage.setItem("autosave", textArea.value);
 });
 
-if (localStorage.getItem("autosave")) {
-    textArea.value = localStorage.getItem("autosave");
-}
+textArea.value = localStorage.getItem("autosave");
